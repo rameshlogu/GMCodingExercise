@@ -1,6 +1,6 @@
 package com.gm.coding.exercise.di;
-import android.app.FragmentManager;
 import android.content.Context;
+import android.support.v4.app.FragmentManager;
 
 import com.gm.coding.exercise.MainActivity;
 import com.gm.coding.exercise.di.scope.ScopeActivity;
@@ -18,7 +18,7 @@ public abstract class MainActivityModule {
     @Named(ACTIVITY_FRAGMENT_MANAGER)
     @ScopeActivity
     static FragmentManager activityFragmentManager(MainActivity activity) {
-        return activity.getFragmentManager();
+        return activity.getSupportFragmentManager();
     }
 
     @Provides
