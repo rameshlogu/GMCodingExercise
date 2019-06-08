@@ -8,24 +8,34 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
+import com.gm.coding.exercise.di.AppModule;
 import com.gm.coding.exercise.di.MainActivityModule;
+import com.gm.coding.exercise.githubcommits.CommitsView;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import dagger.Lazy;
 import dagger.android.AndroidInjection;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.support.HasSupportFragmentInjector;
 
 public class MainActivity extends AppCompatActivity implements HasSupportFragmentInjector {
-
     @Inject
     @Named(MainActivityModule.ACTIVITY_FRAGMENT_MANAGER)
     protected FragmentManager mFragmentManager;
 
     @Inject
-    protected Context mContext;
+    Lazy<CommitsView> mFragmentProvider;
+
+    @Inject
+    @Named(AppModule.APPLICATION_CONTEXT)
+    protected Context mAppContext;
+
+    @Inject
+    @Named(MainActivityModule.ACTIVITY_CONTEXT)
+    protected Context mActivityContext;
 
     @Inject
     DispatchingAndroidInjector<Fragment> dispatchingAndroidInjector;
@@ -35,12 +45,21 @@ public class MainActivity extends AppCompatActivity implements HasSupportFragmen
         AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
+
+        CommitsView commitsView =
+                (CommitsView) mFragmentManager.findFragmentById(R.id.contentFrame);
+        if(commitsView == null) {
+            mFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.contentFrame,mFragmentProvider.get())
+                    .commit();
+        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Toast.makeText(mContext,"****** onResume ******",Toast.LENGTH_LONG).show();
+        Toast.makeText(mActivityContext,"****** onResume ******",Toast.LENGTH_LONG).show();
     }
 
     @Override
