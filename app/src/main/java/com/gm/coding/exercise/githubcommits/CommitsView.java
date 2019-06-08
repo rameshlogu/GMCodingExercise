@@ -52,6 +52,7 @@ public class CommitsView extends Fragment implements HasSupportFragmentInjector,
     @Override
     public void onResume() {
         super.onResume();
+        mPresenter.fetchCommits();
         Toast.makeText(mActivityContext,"****** onResume fragment ******",Toast.LENGTH_LONG).show();
     }
 
