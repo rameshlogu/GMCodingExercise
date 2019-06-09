@@ -20,8 +20,8 @@ public class CommitsPresenter implements CommitsContract.Presenter {
     @Inject
     Repository mRepository;
 
-    private static final String OWNER = "prolificinteractive";
-    private static final String REPO = "material-calendarview";
+    private static final String OWNER = "flutter";
+    private static final String REPO = "flutter";
 
     @Inject
     CommitsPresenter(){}

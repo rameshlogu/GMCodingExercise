@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Toast;
 
 import com.gm.coding.exercise.di.AppModule;
 import com.gm.coding.exercise.di.MainActivityModule;
@@ -45,7 +44,15 @@ public class MainActivity extends AppCompatActivity implements HasSupportFragmen
         AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
+        addFragment();
+    }
 
+    @Override
+    public AndroidInjector<Fragment> supportFragmentInjector() {
+        return dispatchingAndroidInjector;
+    }
+
+    private void addFragment() {
         CommitsView commitsView =
                 (CommitsView) mFragmentManager.findFragmentById(R.id.contentFrame);
         if(commitsView == null) {
@@ -54,16 +61,5 @@ public class MainActivity extends AppCompatActivity implements HasSupportFragmen
                     .replace(R.id.contentFrame,mFragmentProvider.get())
                     .commit();
         }
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Toast.makeText(mActivityContext,"****** onResume ******",Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public AndroidInjector<Fragment> supportFragmentInjector() {
-        return dispatchingAndroidInjector;
     }
 }

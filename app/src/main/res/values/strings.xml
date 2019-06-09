@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">GitHubCommits</string>
+    <string name="app_name">GitHub Commits</string>
+    <string name="commit">Commit:</string>
 </resources>
