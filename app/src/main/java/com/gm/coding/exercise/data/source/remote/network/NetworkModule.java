@@ -1,4 +1,4 @@
-package com.gm.coding.exercise.data.network;
+package com.gm.coding.exercise.data.source.remote.network;
 
 
 import dagger.Module;

@@ -11,7 +11,10 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.gm.coding.exercise.R;
+import com.gm.coding.exercise.data.githubcommits.GitHubCommit;
 import com.gm.coding.exercise.di.MainActivityModule;
+
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -67,7 +70,7 @@ public class CommitsView extends Fragment implements HasSupportFragmentInjector,
     }
 
     @Override
-    public void showCommits() {
+    public void showCommits(List<GitHubCommit> commits) {
 
     }
 

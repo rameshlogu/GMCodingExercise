@@ -1,9 +1,10 @@
 package com.gm.coding.exercise.githubcommits;
 
-import android.util.Log;
-
-import com.gm.coding.exercise.data.network.NetworkService;
+import com.gm.coding.exercise.data.githubcommits.GitHubCommit;
+import com.gm.coding.exercise.data.source.Repository;
 import com.gm.coding.exercise.di.scope.ScopeActivity;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -17,7 +18,10 @@ public class CommitsPresenter implements CommitsContract.Presenter {
     private CommitsContract.View mView;
 
     @Inject
-    NetworkService mService;
+    Repository mRepository;
+
+    private static final String OWNER = "prolificinteractive";
+    private static final String REPO = "material-calendarview";
 
     @Inject
     CommitsPresenter(){}
@@ -29,22 +33,25 @@ public class CommitsPresenter implements CommitsContract.Presenter {
 
     @Override
     public void fetchCommits() {
-        mService.getGithubCommits("prolificinteractive","material-calendarview").subscribeOn(Schedulers.io())
+        mView.showLoading();
+        mRepository.fetchGitHubCommits(OWNER,REPO)
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Object>() {
+                .subscribe(new Observer<List<GitHubCommit>>() {
                     @Override
                     public void onCompleted() {
-                        Log.d(CommitsPresenter.class.getName(),"service onCompleted");
+                        mView.hideLoading();
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.d(CommitsPresenter.class.getName(),"service onError");
+                        mView.hideLoading();
                     }
 
                     @Override
-                    public void onNext(Object object) {
-                        Log.d(CommitsPresenter.class.getName(),"service onNext "+object);
+                    public void onNext(List<GitHubCommit> gitHubCommits) {
+                        mView.hideLoading();
+                        mView.showCommits(gitHubCommits);
                     }
                 });
     }
