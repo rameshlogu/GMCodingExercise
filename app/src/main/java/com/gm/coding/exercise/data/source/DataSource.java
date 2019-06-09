@@ -6,6 +6,10 @@ import java.util.List;
 
 import rx.Observable;
 
+/**
+ * Data source interface
+ * @author Ramesh Loganathan
+ */
 public interface DataSource {
     Observable<List<GitHubCommit>> fetchGitHubCommits(String owner, String repo);
 }

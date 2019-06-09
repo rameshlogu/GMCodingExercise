@@ -12,6 +12,13 @@ import dagger.Module;
 import dagger.Provides;
 import dagger.android.ContributesAndroidInjector;
 
+/**
+ * This is used by Dagger to inject the required arguments
+ * for the Activity {@link com.gm.coding.exercise.MainActivity}
+ * and the Fragment {@link CommitsView}
+ *
+ * @author Ramesh Loganathan
+ */
 @Module
 public abstract class CommitsModule {
 

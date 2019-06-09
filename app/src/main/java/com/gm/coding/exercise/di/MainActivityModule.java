@@ -12,6 +12,10 @@ import javax.inject.Named;
 import dagger.Module;
 import dagger.Provides;
 
+/**
+ * This is used by Dagger to inject the required arguments
+ * and Activity{@link com.gm.coding.exercise.MainActivity}
+ */
 @Module(includes = CommitsModule.class)
 public abstract class MainActivityModule {
     public static final String ACTIVITY_FRAGMENT_MANAGER = "BaseActivityModule.activityFragmentManager";

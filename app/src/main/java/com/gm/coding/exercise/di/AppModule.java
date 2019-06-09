@@ -11,6 +11,11 @@ import javax.inject.Named;
 import dagger.Binds;
 import dagger.Module;
 
+/**
+ * This is used by Dagger to inject the required arguments for Repository and Network
+ *
+ * @author Ramesh Loganathan
+ */
 @Module(includes = {RepositoryModule.class, NetworkModule.class})
 public abstract class AppModule {
     public static final String APPLICATION_CONTEXT = "Application.Context";

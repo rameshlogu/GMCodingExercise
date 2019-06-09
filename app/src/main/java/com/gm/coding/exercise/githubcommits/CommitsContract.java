@@ -4,6 +4,10 @@ import com.gm.coding.exercise.data.githubcommits.GitHubCommit;
 
 import java.util.List;
 
+/**
+ * View and Presenter contract
+ * @author Ramesh Loganathan
+ */
 public interface CommitsContract {
     interface View {
         void showLoading();

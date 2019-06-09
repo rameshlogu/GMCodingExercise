@@ -20,6 +20,10 @@ import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.support.HasSupportFragmentInjector;
 
+/**
+ * Entry activity for the Application
+ * @author Ramesh Loganathan
+ */
 public class MainActivity extends AppCompatActivity implements HasSupportFragmentInjector {
     @Inject
     @Named(MainActivityModule.ACTIVITY_FRAGMENT_MANAGER)

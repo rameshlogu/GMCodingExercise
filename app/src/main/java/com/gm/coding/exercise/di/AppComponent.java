@@ -11,6 +11,11 @@ import dagger.Component;
 import dagger.android.AndroidInjector;
 import dagger.android.support.AndroidSupportInjectionModule;
 
+/**
+ * This is used by Dagger to connect the Modules and Injections
+ *
+ * @author Ramesh Loganathan
+ */
 @Singleton
 @Component(modules = {AndroidSupportInjectionModule.class,
         AppModule.class,

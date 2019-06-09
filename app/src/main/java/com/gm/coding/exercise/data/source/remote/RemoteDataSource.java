@@ -10,6 +10,10 @@ import javax.inject.Inject;
 
 import rx.Observable;
 
+/**
+ * Remote data source which will get the data from API using Retrofit newt work library
+ * @author Ramesh Loganathan
+ */
 public class RemoteDataSource implements DataSource {
 
     @Inject

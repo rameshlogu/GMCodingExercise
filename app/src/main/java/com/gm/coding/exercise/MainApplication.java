@@ -5,6 +5,10 @@ import com.gm.coding.exercise.di.DaggerAppComponent;
 import dagger.android.AndroidInjector;
 import dagger.android.DaggerApplication;
 
+/**
+ * Entry point of the Application
+ * @author Ramesh Loganathan
+ */
 public class MainApplication extends DaggerApplication {
 
     @Override

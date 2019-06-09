@@ -18,6 +18,10 @@ import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+/**
+ * Data adaptor for the Recycler view along with the View holder
+ * @author Ramesh Loganathan
+ */
 public class CommitsListAdaptor extends RecyclerView.Adapter<CommitsListAdaptor.CommitViewHolder> {
 
     private List<GitHubCommit> commitList;
@@ -42,14 +46,13 @@ public class CommitsListAdaptor extends RecyclerView.Adapter<CommitsListAdaptor.
         return commitList.size();
     }
 
-    public List<GitHubCommit> getCommitList() {
-        return commitList;
-    }
-
     void setCommitList(List<GitHubCommit> commitList) {
         this.commitList = commitList;
     }
 
+    /**
+     * View holder which will hold the row items of recycler view
+     */
     static class CommitViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.txt_commit_author)

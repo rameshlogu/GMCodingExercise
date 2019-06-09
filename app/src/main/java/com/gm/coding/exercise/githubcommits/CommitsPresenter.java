@@ -12,6 +12,10 @@ import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
+/**
+ * Presenter implementation
+ * @author Ramesh Loganathan
+ */
 @ScopeActivity
 public class CommitsPresenter implements CommitsContract.Presenter {
 

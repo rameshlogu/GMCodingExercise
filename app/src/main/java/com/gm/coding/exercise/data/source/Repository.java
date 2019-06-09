@@ -9,6 +9,10 @@ import javax.inject.Singleton;
 
 import rx.Observable;
 
+/**
+ * Singleton repository which is used to retrieve data from different sources like API,Local DB, Memory, etc.,
+ * @author Ramesh Loganathan
+ */
 @Singleton
 public class Repository implements DataSource {
     private DataSource mRemoteDataSource;

@@ -9,6 +9,11 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/**
+ * This is used by Dagger to inject the required arguments for Retrofit initializations
+ * Network module which is taking care of Retrofit dependency
+ * @author Ramesh Loganathan
+ */
 @Module
 public class NetworkModule {
 

@@ -27,6 +27,10 @@ import dagger.android.DispatchingAndroidInjector;
 import dagger.android.support.AndroidSupportInjection;
 import dagger.android.support.HasSupportFragmentInjector;
 
+/**
+ * View implementation using Fragment
+ * @author Ramesh Loganathan
+ */
 public class CommitsView extends Fragment implements HasSupportFragmentInjector, CommitsContract.View {
 
     @Inject
