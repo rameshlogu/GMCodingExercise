@@ -11,6 +11,8 @@ import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;
 import dagger.android.ContributesAndroidInjector;
+import rx.Scheduler;
+import rx.android.schedulers.AndroidSchedulers;
 
 /**
  * This is used by Dagger to inject the required arguments
@@ -40,5 +42,10 @@ public abstract class CommitsModule {
     @Provides
     static RecyclerView.LayoutManager commitsListLayoutManager(MainActivity activity){
         return new LinearLayoutManager(activity);
+    }
+
+    @Provides
+    static Scheduler provideMainScheduler() {
+        return AndroidSchedulers.mainThread();
     }
 }

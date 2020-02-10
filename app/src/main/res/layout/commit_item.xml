@@ -1,42 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_margin="10dp">
+    <ImageView
+        android:id="@+id/image_commit_author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher"
+        android:scaleType="fitXY"
+        android:layout_alignBottom="@id/lyt_commit_details"
+        android:layout_alignParentLeft="true"/>
 
     <LinearLayout
+        android:id="@+id/lyt_commit_details"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="10dp">
-        <TextView
-            android:id="@+id/txt_commit_author"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/large"
-            android:textStyle="bold"/>
+        android:layout_toRightOf="@+id/image_commit_author">
 
-        <TextView
-            android:id="@+id/txt_commit_sha"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:textSize="@dimen/medium"
-            android:textColor="@android:color/black"/>
+            android:orientation="vertical"
+            >
+            <TextView
+                android:id="@+id/txt_commit_author"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/large"
+                android:text="Commit"
+                android:textStyle="bold"/>
 
-        <TextView
-            android:id="@+id/txt_commit_message"
+            <TextView
+                android:id="@+id/txt_commit_sha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:textSize="@dimen/medium"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/txt_commit_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:textSize="@dimen/medium"
+                android:textColor="@android:color/black"/>
+        </LinearLayout>
+
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:maxLines="2"
-            android:textSize="@dimen/medium"
-            android:textColor="@android:color/black"/>
+            android:layout_height="0.5dp"
+            android:background="@android:color/black"/>
     </LinearLayout>
+</RelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@android:color/black"/>
-</LinearLayout>

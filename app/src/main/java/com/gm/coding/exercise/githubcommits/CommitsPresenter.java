@@ -9,7 +9,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import rx.Observer;
-import rx.android.schedulers.AndroidSchedulers;
+import rx.Scheduler;
 import rx.schedulers.Schedulers;
 
 /**
@@ -22,13 +22,17 @@ public class CommitsPresenter implements CommitsContract.Presenter {
     private CommitsContract.View mView;
 
     @Inject
+    Scheduler mainScheduler;
+
+    @Inject
     Repository mRepository;
 
     private static final String OWNER = "flutter";
     private static final String REPO = "flutter";
 
     @Inject
-    CommitsPresenter(){}
+    CommitsPresenter(){
+    }
 
     @Override
     public void attachView(CommitsContract.View view) {
@@ -40,7 +44,7 @@ public class CommitsPresenter implements CommitsContract.Presenter {
         mView.showLoading();
         mRepository.fetchGitHubCommits(OWNER,REPO)
                 .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .observeOn(mainScheduler)
                 .subscribe(new Observer<List<GitHubCommit>>() {
                     @Override
                     public void onCompleted() {
